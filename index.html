@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Jejak Lokasi Terakhir</title>
+  <style>
+    body {
+      background: #020617;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #0f172a;
+      padding: 30px;
+      border-radius: 14px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+    button {
+      background: #38bdf8;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .msg {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .ok { color: #22c55e; }
+    .err { color: #ef4444; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>📍 Masukkan Lokasi Terakhir</h2>
+  <p style="font-size:13px;color:#94a3b8">
+    Tulis nama lokasi tempat jejak kunci ditemukan…
+  </p>
+
+  <input type="text" id="locInput" placeholder="Contoh: Pintu Gerbang Puri Insani 2 GDC">
+  <button onclick="cekLokasi()">Cek Lokasi</button>
+  <div id="msg" class="msg"></div>
+</div>
+
+<script>
+  function cekLokasi() {
+    const jawaban = document.getElementById("locInput").value.trim().toLowerCase();
+    const benar = "pintu gerbang puri insani 2 gdc";
+
+    if (jawaban === benar) {
+      document.getElementById("msg").innerHTML = "✅ Lokasi cocok! Mengarahkan ke jejak berita...";
+      document.getElementById("msg").className = "msg ok";
+      setTimeout(() => {
+        window.location.href = "https://news.detik.com/berita/d-8241648/pohon-tumbang-timpa-mobil-imbas-hujan-deras-angin-kencang-di-depok";
+      }, 1200);
+    } else {
+      document.getElementById("msg").innerHTML = "❌ Lokasi belum tepat. Coba teliti lagi.";
+      document.getElementById("msg").className = "msg err";
+    }
+  }
+</script>
+
+</body>
+</html>
